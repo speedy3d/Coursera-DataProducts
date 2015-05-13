@@ -1,10 +1,14 @@
 library(UsingR)
 
-EV <- function(ev1, ev2, pr1, pr2) ev1*pr1 + ev2*pr2
 
 shinyServer(
   function(input, output){
-  output$ExpectedValue <- renderPrint({EV(input$ev1, input$ev2, input$pr1, input$pt2)})
+    
+  #Imperial BMI calculation
+  output$bmi_Result_imperial <- renderPrint({(input$raw_Weight/input$raw_Height^2) * 703})
+  
+  #Metric BMI calculation
+  output$bmi_Result_metric <- renderPrint({(input$raw_Weight/input$raw_Height^2)})
     }
   )
 
