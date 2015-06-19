@@ -9,7 +9,7 @@ shinyServer(
   output$bmi_Result_imperial <- renderPrint({(input$raw_Weight/input$raw_Height^2) * 703})
   
   #Metric BMI calculation
-  output$bmi_Result_metric <- renderPrint({(input$raw_Weight/input$raw_Height^2)})
+  output$bmi_Result_metric <- renderPrint({(input$raw_Weight/(input$raw_Height/100)^2)})
     }
   )
 
