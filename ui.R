@@ -14,11 +14,23 @@ shinyUI(pageWithSidebar(
     submitButton('Submit')
   ),
   mainPanel(
-    h3("Your Calculated BMI is:"),
-    conditionalPanel(condition = "input.measurement_type == 'Imperial'",
-      verbatimTextOutput('bmi_Result_imperial')),
-    
-    conditionalPanel(condition = "input.measurement_type == 'Metric'",
-      verbatimTextOutput('bmi_Result_metric'))
+    tabsetPanel( id="tabs",
+                 
+                 tabPanel("Results", value="results", 
+                          h3("Your Calculated BMI is:"),
+                          conditionalPanel(condition = "input.measurement_type == 'Imperial'",
+                                           verbatimTextOutput('bmi_Result_imperial')),
+                          conditionalPanel(condition = "input.measurement_type == 'Metric'",
+                                           verbatimTextOutput('bmi_Result_metric')),
+                 ),
+                 
+                 tabPanel("Charts", value="charts", 
+                          h3("Results comparison:")
+                          )
+#                  
+#                  tabPanel("Documentation", value="Table", 
+#                           h3("Documentation:"))
+#                 
+    )
   )
 ))

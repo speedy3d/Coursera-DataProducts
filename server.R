@@ -1,4 +1,5 @@
 library(UsingR)
+library(ggplot2)
 
 
 shinyServer(
