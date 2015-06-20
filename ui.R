@@ -8,10 +8,10 @@ shinyUI(pageWithSidebar(
     selectInput("measurement_type", "Please choose imperial (lb/inch) or metric Measurements (kg/cm)", 
       choices = c("Imperial", "Metric")),
     
-    sliderInput('raw_Weight', 'Your Weight (kg/lb)', min = 35, max = 300, value=175, step=1),
-    sliderInput('raw_Height', 'Your Height (inch or centimeter)', min = 48, max = 275, value=69, step=1),
+    sliderInput('raw_Weight', 'Your Weight (kg/lb)', min = 35, max = 300, value=170, step=1),
+    sliderInput('raw_Height', 'Your Height (inch or centimeter)', min = 48, max = 275, value=70, step=1),
     
-    #Slider input is superior with fewer errors 
+    #old numeric input code
     #numericInput('raw_Weight', 'Your Weight (kg/lb)', 0),
     #numericInput('raw_Height', 'Your Height (inch or meter)', 0),
     
@@ -25,7 +25,9 @@ shinyUI(pageWithSidebar(
                           conditionalPanel(condition = "input.measurement_type == 'Imperial'",
                                            verbatimTextOutput('bmi_Result_imperial')),
                           conditionalPanel(condition = "input.measurement_type == 'Metric'",
-                                           verbatimTextOutput('bmi_Result_metric'))
+                                           verbatimTextOutput('bmi_Result_metric')),
+                          h3("Your Weight Status is:"),
+                          verbatimTextOutput('i_status')
                  ),
                  
                  tabPanel("Charts", value="charts", 
