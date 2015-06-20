@@ -85,7 +85,7 @@ shinyServer(
     text(1.95,54,"Underweight",cex=2,srt=22)
     
     #Plot a point for user input bmi value
-    points(input$raw_Height*100, input$raw_Weight, pch=18, cex=3)
+    points(input$raw_Height/100, input$raw_Weight, pch=18, cex=3)
   })
   
   }
