@@ -29,6 +29,21 @@ shinyServer(
   }
   })
   
+  #Determine weight status - metric
+  observe({
+    if(m_bmi()>=30){
+      output$m_status <- renderPrint('Obese')
+    }
+    else if(m_bmi()>=25){
+      output$m_status <- renderPrint('Overweight')
+    }
+    else if(m_bmi()>=18.5){
+      output$m_status <- renderPrint('Normal')
+    }
+    else {
+      output$m_status <- renderPrint('Underweight')
+    }
+  })
   
   
   }

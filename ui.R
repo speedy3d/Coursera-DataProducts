@@ -26,17 +26,21 @@ shinyUI(pageWithSidebar(
                                            verbatimTextOutput('bmi_Result_imperial')),
                           conditionalPanel(condition = "input.measurement_type == 'Metric'",
                                            verbatimTextOutput('bmi_Result_metric')),
+                          
                           h3("Your Weight Status is:"),
-                          verbatimTextOutput('i_status')
+                          conditionalPanel(condition = "input.measurement_type == 'Imperial'",
+                                           verbatimTextOutput('i_status')),
+                          conditionalPanel(condition = "input.measurement_type == 'Metric'",
+                                           verbatimTextOutput('m_status'))
                  ),
                  
                  tabPanel("Charts", value="charts", 
                           h3("Results comparison:")
                           ),
                   
-                  tabPanel("Documentation", value="Table", 
-                           h3("Documentation:")
-                           )
+                tabPanel("Documentation", value="Table", 
+                          h3("Documentation:")
+                          )
                  
     )
   )
