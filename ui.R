@@ -35,7 +35,9 @@ shinyUI(pageWithSidebar(
                  ),
                  
                  tabPanel("Charts", value="charts", 
-                          h3("Results comparison:")
+                          h3("Results comparison:"),
+                          h4("Your status is shown as a point on the chart"),            
+                          plotOutput(outputId = "i_main_plot", height = "400px")
                           ),
                   
                 tabPanel("Documentation", value="Table", 
