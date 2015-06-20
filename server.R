@@ -70,10 +70,23 @@ shinyServer(
   text(75,120,"Underweight",cex=2,srt=18)
     
   #Plot a point for user input bmi value
-  points(input$raw_Height, input$raw_Weight, pch = 2, bg = "green", cex = 4)
+  points(input$raw_Height, input$raw_Weight, pch=18, cex=3)
   })
   
-  
+  #plot - metric. Sourced from (http://sas-and-r.blogspot.ie/2010/04/example-731-contour-plot-of-bmi-by.html)
+  output$m_main_plot <- renderPlot({
+    par(mar=c(4,4,0,0))
+    contour(m_ht,m_wt,m_bmiwtht,levels = c(18.5,25,30), drawlabels=FALSE,
+            xlab="Height (meters)",ylab="Weight (kg)")
+    
+    text(1.4,90,"Obese",cex=2,srt=45)
+    text(1.71,80,"Overweight",cex=2,srt=32)
+    text(1.75,67,"Normal",cex=2,srt=28)
+    text(1.95,54,"Underweight",cex=2,srt=22)
+    
+    #Plot a point for user input bmi value
+    points(input$raw_Height*100, input$raw_Weight, pch=18, cex=3)
+  })
   
   }
 )

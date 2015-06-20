@@ -36,8 +36,11 @@ shinyUI(pageWithSidebar(
                  
                  tabPanel("Charts", value="charts", 
                           h3("Results comparison:"),
-                          h4("Your status is shown as a point on the chart"),            
-                          plotOutput(outputId = "i_main_plot", height = "400px")
+                          h2("Your status is shown as a point on the chart"),
+                          conditionalPanel(condition = "input.measurement_type == 'Imperial'",
+                                           plotOutput(outputId = "i_main_plot", height = "400px")),
+                          conditionalPanel(condition = "input.measurement_type == 'Metric'",
+                                           plotOutput(outputId = "m_main_plot", height = "400px"))
                           ),
                   
                 tabPanel("Documentation", value="Table", 
